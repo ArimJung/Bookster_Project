@@ -19,7 +19,7 @@ public class AdminAction implements Action{
 		
 		datasL = dao.추천받은 게시글(vo);
 		datasR = dao.신고받은 게시글(vo);
-		
+		// 수정
 		request.setAttribute("datasL", datasL);
 		request.setAttribute("datasR", datasR);
 		
