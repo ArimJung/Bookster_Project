@@ -24,7 +24,8 @@ public class InsertRRAction implements Action{
 		
 		vo.setRrcontent(request.getParameter("content"));
 		vo.setMid(mvo.getMid());
-		vo.setBid(Integer.parseInt(request.getParameter("bid")));	
+		vo.setBid(Integer.parseInt(request.getParameter("bid")));
+		vo.setRid(Integer.parseInt(request.getParameter("rid")));
 		
 		if(dao.insert_RR(vo)) {
 			forward = new ActionForward();

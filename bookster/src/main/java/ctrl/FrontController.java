@@ -116,6 +116,22 @@ public class FrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/myreview.do")) {
+			try {
+				forward = new MyreviewAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/myboard.do")) {
+			try {
+				forward = new MyboardAction().execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		else if(command.equals("/updateM.do")) {
 			try {
 				forward = new UpdateMAction().execute(request, response);

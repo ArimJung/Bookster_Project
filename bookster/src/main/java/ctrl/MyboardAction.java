@@ -4,29 +4,34 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BoardDAO;
 import vo.BoardVO;
+import vo.MemberVO;
 
-public class AdminAction implements Action{
+public class MyboardAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		ArrayList<BoardVO> datas = new ArrayList<BoardVO>(); 
 		ActionForward forward = null;
 		BoardDAO dao = new BoardDAO();
 		BoardVO vo = new BoardVO();
 		
-		datasL = dao.추천받은 게시글(vo);
-		datasR = dao.신고받은 게시글(vo);
+		HttpSession session=request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		request.setAttribute("datasL", datasL);
-		request.setAttribute("datasR", datasR);
+		vo.setMid(mvo.getMid());
 		
-	
-		forward=new ActionForward();
-		forward.setPath("/admin.jsp");
+		datas = dao.selectAll_MEMBER(vo);
+		
+		request.setAttribute("datas", datas);
+		
+		forward = new ActionForward();
+		forward.setPath("/myboard.jsp");
 		forward.setRedirect(false);
+					
 		return forward;
 	}
 

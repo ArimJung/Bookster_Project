@@ -24,7 +24,7 @@ public class CommunityBoardAction implements Action{
 		if(data != null) {
 			request.setAttribute("data", data);
 			forward=new ActionForward();
-			forward.setPath("/community.jsp");
+			forward.setPath("/communityBoard.jsp");
 			forward.setRedirect(false);
 		}
 		else {

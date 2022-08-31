@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.NovelDAO;
-import set.BoardSet;
 import vo.NovelVO;
 
 public class NovelMainAction implements Action{
@@ -22,16 +21,17 @@ public class NovelMainAction implements Action{
 		String searchContent = request.getParameter("searchContent");
 		String paramCnt=request.getParameter("cnt");
 		
+		vo.setSearchCondition(searchCondition);
+		vo.setSearchContent(searchContent);
+		
 		if(paramCnt==null || paramCnt.equals("")){
-			vo.setNcnt(20);
+			vo.setNcnt(1);
 		}
 		else {
 			vo.setNcnt(Integer.parseInt(paramCnt));
 		}
 		
 //		vo.setSearchCondition(request.getParameter("searchCondition"));
-		vo.setSearchContent(searchContent);
-		vo.setSearchCondition(searchCondition);
 		
 		datas=dao.selectAll_N(vo);
 		

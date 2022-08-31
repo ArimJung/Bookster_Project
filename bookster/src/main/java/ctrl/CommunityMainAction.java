@@ -22,8 +22,15 @@ public class CommunityMainAction implements Action{
 		String searchContent = request.getParameter("searchContent");
 		String paramCnt=request.getParameter("cnt");
 		
-//		vo.setSearchContent(searchContent);
-//		vo.setSearchCondition(searchCondition);
+		vo.setSearchContent(searchContent);
+		vo.setSearchCondition(searchCondition);
+		
+		if(paramCnt==null || paramCnt.equals("")){
+			vo.setBcnt(1);
+		}
+		else {
+			vo.setBcnt(Integer.parseInt(paramCnt));
+		}
 		
 		datas = dao.sql_selectAll_BoardAll(vo);
 			

@@ -17,15 +17,15 @@ public class DeleteOAction implements Action {
 		
 		vo.setOid(Integer.parseInt(request.getParameter("oid")));
 				
-		request.setAttribute("bid", request.getParameter("bid"));
+		request.setAttribute("nid", request.getParameter("nid"));
 		
-		if(dao.update_O(vo)) {
+		if(dao.delete_O(vo)) {
 			forward = new ActionForward();
 			forward.setPath("novelBoard.do");
 			forward.setRedirect(true);
 		}
 		else {
-			throw new Exception("updateO ¿À·ù");
+			throw new Exception("deleteO ï¿½ï¿½ï¿½ï¿½");
 		}
 					
 		return forward;
