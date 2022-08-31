@@ -23,6 +23,7 @@ public class InsertMAction implements Action{
 		vo.setNickname(request.getParameter("nickname"));
 		vo.setMphone(request.getParameter("mphone"));
 		vo.setMemail(request.getParameter("memail"));
+		vo.setRole(request.getParameter("member"));
 
 		if(dao.insert_M(vo)) {
 			forward = new ActionForward();

@@ -269,7 +269,7 @@ public class FrontController extends HttpServlet {
 		}
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();;
-		out.println("<script>alert('요청처리실패!');history.go(-1);</script>");
+		out.println("<script>alert('占쎌뒄筌ｏ옙筌ｌ꼶�봺占쎈뼄占쎈솭');history.go(-1);</script>");
 				
 	}
 }

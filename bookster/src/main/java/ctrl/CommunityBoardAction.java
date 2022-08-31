@@ -28,7 +28,7 @@ public class CommunityBoardAction implements Action{
 			forward.setRedirect(false);
 		}
 		else {
-			throw new Exception("CBselectOne ¿À·ù");
+			throw new Exception("CBselectOne ì˜¤ë¥˜");
 		}
 		
 		request.setAttribute("cnt", request.getParameter("cnt"));

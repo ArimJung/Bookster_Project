@@ -48,12 +48,6 @@ public class ListenerCrawlingStart implements ServletContextListener {
           if(!nDAO.hasSample(novel)) { 
               Novel.sample(); 
            }
-          novel.setNcnt(100);
-          datas= nDAO.selectAll_N(novel); 
-              
-//          System.out.println(datas);
-          sc.setAttribute("datas", datas);
-      
           
           System.out.println("TestListener: contextInitialized(): ");
     }

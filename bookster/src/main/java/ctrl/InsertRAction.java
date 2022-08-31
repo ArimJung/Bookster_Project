@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ReplyDAO;
+import vo.MemberVO;
 import vo.ReplyVO;
 
 
@@ -17,11 +18,12 @@ public class InsertRAction implements Action{
 		ActionForward forward = null;
 		ReplyDAO dao = new ReplyDAO();
 		ReplyVO vo = new ReplyVO();
-		HttpSession session=request.getSession();
 		
+		HttpSession session=request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+
 		vo.setRcontent(request.getParameter("content"));
-		vo.setMid((String)session.getAttribute("mid"));
-		vo.setLid(Integer.parseInt(request.getParameter("lid")));
+		vo.setMid(mvo.getMid());
 		vo.setBid(Integer.parseInt(request.getParameter("bid")));	
 		
 		

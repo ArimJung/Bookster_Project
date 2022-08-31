@@ -11,17 +11,19 @@ public class UpdateMAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session=request.getSession();
 		
 		ActionForward forward = null;
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
+				
+		HttpSession session=request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		vo.setMid((String)session.getAttribute("mid"));
+		vo.setMid(mvo.getMid());
 		vo.setMpw(request.getParameter("mpw"));
 		vo.setMname(request.getParameter("mname"));
 
-		if(dao.update_M(vo)) {
+		if(dao.update_MY(vo)) {
 			session.invalidate();
 			forward = new ActionForward();
 			forward.setPath("main.do");

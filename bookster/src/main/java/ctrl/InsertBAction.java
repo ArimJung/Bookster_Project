@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.BoardDAO;
 import vo.BoardVO;
+import vo.MemberVO;
 
 public class InsertBAction implements Action {
 
@@ -16,7 +17,9 @@ public class InsertBAction implements Action {
 		BoardVO vo = new BoardVO();
 		
 		HttpSession session=request.getSession();
-		vo.setMid((String)session.getAttribute("mid"));
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		
+		vo.setMid(mvo.getMid());
 		vo.setBtitle(request.getParameter("btitle"));
 		vo.setBcontent(request.getParameter("bcontent"));
 		

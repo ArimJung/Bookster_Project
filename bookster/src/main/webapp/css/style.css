@@ -7426,7 +7426,7 @@ p.ceb-single {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #020d18;
+  background-color: #ffd200;
   /* change if the mask should have another color then white */
   z-index: 99999;
   text-align: center;
@@ -7931,7 +7931,7 @@ header {
   -moz-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
-  background-color:#233a50;
+  background-color:#ffd200;
 }
 @media (max-width: 991px) {
   header {
@@ -7940,7 +7940,7 @@ header {
 }
 header .navbar-default {
   margin-bottom: 0;
-  padding: 30px 0;
+  padding:  22px 0;
   background-color: transparent;
   border: none;
   position: relative;
@@ -7957,6 +7957,7 @@ header .navbar-default {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    
   }
 }
 header .navbar-default .flex-parent {
@@ -8170,7 +8171,7 @@ header#headerv3-light {
   background-color: #020d18;
 }
 .sticky {
-  background-color: #0f2133;
+  background-color: #ffd200;
   position: fixed;
   width: 100%;
   z-index: 9999;
@@ -8262,7 +8263,8 @@ header#headerv3-light {
     margin-left: 0 !important;
   }
   header img.logo {
-    width: 18%;
+    width: 200px;
+    height:auto;
   }
 }
 @media (max-width: 767px) {
@@ -8274,7 +8276,7 @@ header#headerv3-light {
   }
   header .navbar-default img.logo {
     width: 30%;
-    margin-top: 5px;
+    margin-top: 0;
   }
 }
 footer {

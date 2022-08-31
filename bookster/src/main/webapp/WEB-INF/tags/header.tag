@@ -65,12 +65,57 @@
 		      <!-- Modal body -->
 		      <div class="modal-body">
            		<div class="row">
-               <label for="username">
+               <form>
+                    아이디
+                    <input type="text" name="mid" id="mid" placeholder="회원아이디 입력" required="required" />
+                    <input type="button" value="아이디 체크" onclick="check();">
+                    <div class="result1"></div>
+                <br>
+              
                     휴대폰번호
                     <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="01012345678" required="required" />
-                    <input type="button" value="임시 비밀번호 발급" onclick="sms();">
-                </label>
-                    <span id="result"></span>
+                    <input type="button" value="임시 비밀번호 발급" onclick="sms();"id="btu">
+              	</form>
+                    <div id="result"></div>
+<script type="text/javascript">
+document.getElementById("btu").disabled=true;
+function check(){
+	   var mid=$("#mid").val(); // id=mid의 value값
+	   $.ajax({
+	      type: 'GET', //어떤 방식으로 보낼지 "get, post"
+	      url: 'check?mid='+mid, //어떤 요청을 하는지 -> mid라는 변수만들어서 사용자가 입력한 값을 확보한 상태 > DB한테 물어볼 예정 "mid라는 값이 DB에 이미 있어?" => DAO(M)로 가야함 > 이제 C가(서블릿) 작업을 할 차례구나! 
+	      data: {mid:mid},
+	      success: function(result){ // 성공했을 때
+	         // result 는 String
+	         // JS-1 : 모든데이터가 객체
+	         // JS-2 : 동적타이핑 지원
+	         console.log("로그1 ["+result+"] succes");
+	         if(result==1){ // 중복이 아님, 사용가능
+	            $(".result1").text("가입된 회원이 아닙니다.");
+	            $(".result1").css("color","red");
+	            document.getElementById("btu").disabled=true;
+	            console.log("로그2 ["+result+"] succes");
+	         }else{ // 중복, 사용불가
+	            $(".result1").text("가입시 휴대전화번호 입력해주세요.");
+	            $(".result1").css("color","blue");
+	            console.log("로그3 ["+result+"] succes");
+	            document.getElementById("btu").disabled=false;
+	         }
+	      },
+	      error: function(request, status, error){
+	         console.log("code: "+request.status);
+	         console.log("message: "+request.responseText);
+	         console.log("error: "+error);
+	      }
+	   });
+	}
+
+</script>               
+
+
+
+
+                    
                
          	 	 </div>
 		      </div>
@@ -265,7 +310,7 @@ function naverLogout() { // 로그아웃시 팝업 등장했다 사라짐
 			url: '${pageContext.request.contextPath}/Sms',
 			data:{phoneNumber:phoneNumber},
 			success: function(result){
-				console.log("로그 success");
+				console.log("글을써");
 				$("#result").text("임시 비밀번호 발급이 완료되었습니다.");
 				$("#result").css("color","blue");
 			},

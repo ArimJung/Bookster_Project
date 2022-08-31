@@ -13,15 +13,17 @@ public class DeleteMAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session=request.getSession();
 
 		ActionForward forward = null;
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
 
-		vo.setMid((String)session.getAttribute("mid"));
+		HttpSession session=request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		
+		vo.setMid(mvo.getMid());
 		vo.setMpw(request.getParameter("mpw"));
-		vo = dao.selectOne_M(vo);
+		vo = dao.selectOne_LOGIN(vo);
 
 		if(vo != null) {
 				dao.delete_M(vo);
@@ -31,7 +33,7 @@ public class DeleteMAction implements Action{
 				forward.setRedirect(true);
 			}
 			else {
-				throw new Exception("deleteM ����");
+				throw new Exception("deleteM 오류");
 			}
 		return forward;
 	}
